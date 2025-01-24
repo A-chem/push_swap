@@ -1,0 +1,72 @@
+**The Algorithm**
+
+**Step 1: Start by Pushing Two Elements to `STACK_B`**
+
+Push two elements without performing any checks. This provides the foundation for calculating positions in `STACK_B`.
+
+**Step 2: Find the Cheapest Number to Push**
+
+*Calculate the Cost of Each Move*
+
+For each number in `STACK_A`, calculate:
+
+*Moves in `STACK_A`:*
+Determine how many rotations `(ra)` or reverse rotations `(rra)` are needed to bring the number to the top of `STACK_A`.
+
+*Moves in `STACK_B`:*
+Once the number is ready to be pushed, determine how many rotations `(rb)` or reverse rotations `(rrb)` are needed to position it correctly in STACK_B.
+
+*Determine the Correct Position in `STACK_B`:*
+
+To place the number correctly:
+If it's the new maximum or new minimum, it goes just above the current maximum in `STACK_B`.
+If it’s somewhere in between, it should go between two consecutive elements such that the number is greater than the element below and smaller than the element above.
+
+Example:
+|STACK_B = [8, 6, 4, 2] (top to bottom)|
+|Number = 5                            |
+|Correct Position = between 6 and 4    |
+
+*Combine Rotations:*
+
+If both `STACK_A` and `STACK_B` require rotations in the same direction:
+Use `rr` (rotate both) or `rrr` (reverse rotate both) to combine them.
+
+Example:
+|ra + rb → rr   |
+|rra + rrb → rrr|
+
+**Select the Cheapest Move:**
+
+For each number, calculate the total cost ;
+`Total Cost` = Moves in `STACK_A` + Moves in `STACK_B`
+Track the number with the lowest total ``cost`.
+
+
+**Step 3: Handle the Last Three Elements in STACK_A**
+
+When `STACK_A` is reduced to three elements, sort them directly:
+Requires `1` or `2` operations depending on the configuration.
+
+**Step 4: Push Back from STACK_B to STACK_A**
+
+For each element in `STACK_B`:
+Find its correct position in `STACK_A`.
+Rotate `STACK_A` to bring the correct position to the top.
+Push the element back to `STACK_A`.
+
+**Step 5: Final Arrangement**
+
+Rotate `STACK_A` to ensure the smallest element is at the top.
+This ensures the stack is fully sorted.
+Efficiency Highlights
+
+**Simultaneous Rotations:**
+
+* By rotating `STACK_A` and `STACK_B` together, you significantly reduce the number of operations required.
+Cheapest Push Calculation:
+
+* Prioritize the element that requires the fewest moves to optimize sorting efficiency.
+Breaking Down Small Cases:
+
+* The simplicity of handling three elements ensures focus is on minimizing moves for larger stacks.
