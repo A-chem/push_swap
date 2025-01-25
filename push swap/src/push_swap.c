@@ -37,22 +37,17 @@ int main(int ac, char **av)
       return (0);
   validate_input(ac, av, &data);
   stack_a = init_stack(&stack_a, &data);
-  sort_stack(&stack_a, &stack_b);
-//   int i = 0;
-//   while (stack_a)
-//   {
-//     printf("stack_a[%d] = %d\n", i, stack_a->data);
-//     stack_a = stack_a->next;
-//     i++;
-//   }
-//   i = 0;
-//   while (stack_b)
-//   {
-//     printf("stack_b[%d] = %d\n", i, stack_b->data);
-//     stack_b = stack_b->next;
-//     i++;
-//    }
-   free_data(&data);
+  if (size_stack(stack_a) == 2)
+    sort_two(&stack_a);
+  else if (size_stack(stack_a) == 3)
+    sort_three(&stack_a);
+  else if ( size_stack(stack_a) > 3)
+  {
+     sort_stack(&stack_a, &stack_b);
+  }
+
+
+free_data(&data);
    free_stack(&stack_a);
    free_stack(&stack_b);
 }

@@ -37,7 +37,8 @@ int input_valid(t_data *data)
     int i ;
     int j ;
 
-    data->num  = ft_split(data->str, ' ');
+    data->num  = ft_split(data ->str, ' ');
+ 
     if (!data->num)
         return (0);
     i = 0;
@@ -45,7 +46,10 @@ int input_valid(t_data *data)
     while (data->num[i])
     {
         if (ft_check_element(data->num[i]) == 0)
+        {
+                printf("aaaaaaa");
                     return (0);
+        }
         else if (ft_atoi(data->num[i]) > INT_MAX || ft_atoi(data->num[i]) < INT_MIN)
                     return (0);
         else if (ft_duplicate(data->num, data->num[i]) == 0)

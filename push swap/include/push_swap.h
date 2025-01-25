@@ -17,6 +17,8 @@ typedef struct s_stack
 {
     int             data;
     size_t          index;
+    int             max;
+    int             min;
     struct s_stack  *next;
 }                   t_stack;
 
@@ -48,6 +50,11 @@ void    rr(t_stack **stack_a, t_stack **stack_b);
 void    rra(t_stack **stack_a);
 void    rrb(t_stack **stack_b);
 void    rrr(t_stack **stack_a, t_stack **stack_b);
+void    sort_two(t_stack **stack_a);
 void    sort_three(t_stack **stack_a);
+size_t  size_stack(t_stack *stack);
 void    sort_stack(t_stack **stack_a , t_stack **stack_b);
+void    print_stack(t_stack *stack, char *name);
+int min_stack (t_stack *stack);
+int max_stack (t_stack *stack);
 #endif

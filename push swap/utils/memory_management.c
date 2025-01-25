@@ -29,3 +29,14 @@ void free_stack(t_stack **stack)
         }
         stack = NULL;
 }
+void print_stack(t_stack *stack, char *name)
+{
+    printf("%s: ", name);
+    while (stack)
+    {
+        printf("%d ", stack->data);
+        // printf("index %zu ", stack->index);
+        stack = stack->next;
+    }
+    printf("\n");
+}
