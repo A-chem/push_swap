@@ -47,7 +47,6 @@ int input_valid(t_data *data)
     {
         if (ft_check_element(data->num[i]) == 0)
         {
-                printf("aaaaaaa");
                     return (0);
         }
         else if (ft_atoi(data->num[i]) > INT_MAX || ft_atoi(data->num[i]) < INT_MIN)

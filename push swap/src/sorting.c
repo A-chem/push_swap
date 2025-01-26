@@ -90,23 +90,31 @@ size_t size_stack(t_stack *stack)
         i++;
     }
  }
-int get_rotation_cost(t_stack *stack, size_t index, size_t stack_size)
+int get_rotation_cost(size_t index, size_t stack_size)
 {
     int rotation_cost;
     int stack_size_half;
     stack_size_half = stack_size / 2;
     rotation_cost = index;
     if (index > stack_size_half)
-        rotation_cost = stack_size - index;
+        rotation_cost = stack_size - index ;
     return (rotation_cost);
 }
-int find_position_in_b(t_stack *stack_a , int value)
+int find_position_in_a(t_stack *stack_a , int value)
  {
-    int position;
-    int stack_size;
-    stack_size = size_stack(stack_a);
-    position = 0;
-    return (position);  
+    int position_in_a;
+    int data = INT_MAX;
+    position_in_a = 0;
+        while(stack_a)
+        {
+            if (stack_a ->data > value && stack_a->data < data)
+            {
+                position_in_a = stack_a->index;
+                data = stack_a->data;
+            }
+            stack_a = stack_a->next;
+        }
+        return (position_in_a);
  }
 t_stack *find_cheapest(t_stack *stack_a , t_stack *stack_b , size_t stack_size_a , size_t stack_size_b)
  {
@@ -115,87 +123,105 @@ t_stack *find_cheapest(t_stack *stack_a , t_stack *stack_b , size_t stack_size_a
     int cost_total = 0;
     int cost_a;
     int cost_b;
+    int position_in_a;
 
     
     while (stack_b)
     {
-        cost_a = get_rotation_cost(stack_a, find_position_in_b(stack_a, stack_a->data), stack_size_a);
-        cost_b = get_rotation_cost(stack_b, stack_b->index, stack_size_b);
+        position_in_a = find_position_in_a(stack_a, stack_b->data);
+        cost_a = get_rotation_cost(position_in_a, stack_size_a);
+        cost_b = get_rotation_cost(stack_b->index, stack_size_b);
         cost_total = cost_a + cost_b;
-        printf("stack_a->data : %d\n", stack_b->data);
-        printf("cost_a : %d\n", cost_a);
-        printf("cost_b : %d\n", cost_b);
-        printf("cost_total : %d\n", cost_total);
         if (cost_total < min_cost)
         {
         min_cost = cost_total;
         cheapest = stack_b;
         }
+        printf("position_a : %d\n", position_in_a);
+        printf("stack_b : %d\n", stack_b->data);
+        printf("cost a : %d\n", cost_a);
+        printf("cost b : %d\n", cost_b);
+        printf("cost total : %d\n", cost_total);
         stack_b = stack_b->next;
     }
     return (cheapest);
  }
- void push_cheapest_to_b(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest, size_t position_in_a)
+ void push_cheapest_to_a(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest, size_t position_in_a)
 {
+    int max = max_stack(*stack_a);
+    int min = min_stack(*stack_a);
+    printf ("max : %d\n", max);
+    printf ("min : %d\n", min);
      while (cheapest->data != (*stack_b)->data)
     {
-        if (cheapest->data > size_stack (*stack_b) / 2)
+        if (cheapest->index < size_stack (*stack_b) / 2)
             rb(stack_b);
-        else if (cheapest->data < size_stack (*stack_b) / 2)
+        else if (cheapest->index > size_stack (*stack_b) / 2)
             rrb(stack_b);
     }
-    if(cheapest->data == (*stack_a)->max)
+    
+  if (cheapest->data > max)
+  {
+    while (*stack_a)
     {
-        pa(stack_a, stack_b);
-        ra(stack_a);
+        if ((*stack_a)->data == max)
+        {
+        position_in_a = (*stack_a)->index;
+        break;
+        }
+        (*stack_a) = (*stack_a)->next;
     }
-    else if (cheapest->data == (*stack_a)->min)
-        pa(stack_a, stack_b);
-        if (position_in_a < size_stack(*stack_a) / 2)
+    if (position_in_a > size_stack(*stack_a) / 2)
+    position_in_a = size_stack(*stack_a) - position_in_a;
+  }
+ if (position_in_a < size_stack(*stack_a) / 2) 
         {
             while (position_in_a != 0)
             {
                 ra(stack_a);
                 position_in_a--;
             }
-            pa(stack_a, stack_b);
+              pa(stack_a, stack_b);
         }
         else
         {
+         position_in_a = size_stack(*stack_a) - position_in_a;
             while (position_in_a != 0)
             {
                 rra(stack_a);
                 position_in_a--;
             }
-            pa(stack_a, stack_b);
+              pa(stack_a, stack_b);
         }
+        index_stack (stack_a, stack_b);
+
 }
  void    sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
    t_stack *cheapest  = NULL;
   
    int position_in_a;
-   int i = 1;
-     while (size_stack(*stack_a) > 3)
+   int size = size_stack(*stack_a);
+     while (size > 3)
     {
         pb (stack_a, stack_b);
-        index_stack(stack_a, stack_b);
+        size--;
     }
     sort_three(stack_a);
-     print_stack(*stack_a, "stack_a");
-     print_stack(*stack_b,  "stack_b");
-   while (i)
-   {
     index_stack(stack_a, stack_b);
-    cheapest = find_cheapest( *stack_a, *stack_b, size_stack(*stack_a), size_stack(*stack_b));
-    printf("cheapest->data : %d\n", cheapest->data);
-    position_in_a = find_position_in_b(*stack_a, cheapest->data);
-    printf("position_in_b : %d\n", position_in_a);
-    push_cheapest_to_b( stack_a, stack_b, cheapest , position_in_a);
     print_stack(*stack_a, "stack_a");
     print_stack(*stack_b, "stack_b");
-    i--;
+   while (stack_b)
+   {
+    cheapest = find_cheapest( *stack_a, *stack_b, size_stack(*stack_a), size_stack(*stack_b));
+    index_stack(stack_a, stack_b);
+    position_in_a = find_position_in_a(*stack_a, cheapest->data), size_stack(*stack_a);
+    push_cheapest_to_a( stack_a, stack_b, cheapest , position_in_a);
+    printf("cheapest : %d\n", cheapest->data);
+    printf("position in a : %d\n", position_in_a);
+    print_stack(*stack_a, "stack_a");
+    print_stack(*stack_b, "stack_b");
+    (*stack_b) = (*stack_b)->next;
     }
-
 }
 

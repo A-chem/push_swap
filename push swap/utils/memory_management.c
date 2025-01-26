@@ -32,10 +32,12 @@ void free_stack(t_stack **stack)
 void print_stack(t_stack *stack, char *name)
 {
     printf("%s: ", name);
+    int i = 0;
     while (stack)
     {
         printf("%d ", stack->data);
-        // printf("index %zu ", stack->index);
+        printf("index%zu\n",stack->index);
+        i++;
         stack = stack->next;
     }
     printf("\n");

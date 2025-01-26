@@ -17,8 +17,6 @@ typedef struct s_stack
 {
     int             data;
     size_t          index;
-    int             max;
-    int             min;
     struct s_stack  *next;
 }                   t_stack;
 
