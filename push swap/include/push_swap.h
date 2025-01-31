@@ -17,8 +17,15 @@ typedef struct s_stack
 {
     int             data;
     size_t          index;
+    int             max;
+    int             min;
     struct s_stack  *next;
 }                   t_stack;
+typedef struct s_mm
+{
+    int     min;
+    int     max;
+}   t_mm;
 
 int     input_valid(t_data *data);
 int     ft_atoi(char *str);
