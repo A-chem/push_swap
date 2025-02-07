@@ -31,25 +31,52 @@ void    sort_three(t_stack **stack_a)
     else if (a < b && b > c && a > c)
         rra(stack_a);
 }
+void    sort_four(t_stack **stack_a, t_stack **stack_b)
+{
+    int min_index;
+
+    min_index = find_min_index(*stack_a);
+    move_min_to_top(stack_a, min_index);
+    pb(stack_a, stack_b);
+    sort_three(stack_a);
+    pa(stack_a, stack_b);
+    
+}
+void sort_five(t_stack **stack_a, t_stack **stack_b)
+{
+     int min_index;
+    min_index  = find_min_index(*stack_a);
+    move_min_to_top(stack_a, min_index);
+    pb(stack_a, stack_b);
+
+    min_index = find_min_index(*stack_a);
+    move_min_to_top(stack_a, min_index);
+    pb(stack_a, stack_b);
+
+    sort_three(stack_a);
+
+    pa(stack_a, stack_b);
+    pa(stack_a, stack_b);
+}
     
 
 void sort_chunk(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 {
     int a_index;
     int *array;
-    int size;
-    int size_b;
     int i;
+    t_element element;
 
-    size = size_stack(*stack_a);
-    array = stack_array(*stack_a, size);
+    element.size_a = size_stack(*stack_a);
+    array = stack_array(*stack_a, element.size_a);
+    element.array = array;
     if (!array)
         return;
-    size_b = 0;
+    element.size_b = 0;
     while (*stack_a)
     {
-         a_index = find_index_in_array(array, size, (*stack_a)->data);
-        move_element(stack_a, stack_b, a_index, &size_b, chunk_size);
+        a_index = find_index_in_array(array, element.size_a, (*stack_a)->data);
+        move_element(stack_a, stack_b, a_index, &element, chunk_size);
     }
     push_stack_a(stack_a , stack_b);
     free(array);

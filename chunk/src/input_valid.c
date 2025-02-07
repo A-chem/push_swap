@@ -22,6 +22,8 @@ int ft_check_element(char *str)
     if (!str || !*str) 
         return (0);
     i = 0;
+    if (str[i] == '-' && str[i + 1] == '\0')
+        return (0);
     if (str[i] == '-' || str[i] == '+')
         i++;
     while (str[i])

@@ -58,19 +58,23 @@ int find_index_in_array( int *array, int size, int data)
     }
     return -1;
 }
-void move_element (t_stack **stack_a, t_stack **stack_b, int a_index, int *size_b, int chunk_size)
+
+void move_element (t_stack **stack_a, t_stack **stack_b, int a_index, t_element *element, int chunk_size)
 {
-    if (a_index <= *size_b)
+    
+    if (a_index <= element->size_b)
     {
         pb(stack_a, stack_b);
-        (*size_b)++;
+        element->size_b++;
     }
-    else if (a_index <= *size_b + chunk_size)
+    else if (a_index <= element->size_b + chunk_size)
     {
         pb(stack_a, stack_b);
         rb(stack_b);
-        (*size_b)++;
+        element->size_b++;
     }
+    else if (detect_comb(stack_a, element))
+        rra(stack_a);
     else
     {
         ra(stack_a);

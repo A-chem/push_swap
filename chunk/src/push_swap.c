@@ -8,7 +8,6 @@ void validate_input(int ac, char **av, t_data *data)
     i = 1;
     while (i < ac)
     {
-  
       if(av[i][0] == '\0')
       {
         printf("Error: Empty input.\n");
@@ -29,32 +28,50 @@ void validate_input(int ac, char **av, t_data *data)
         exit(1);
     }
 }
+void sort_stack(t_stack **stack_a, t_stack **stack_b)
+{
+  int size ;
+  size = size_stack(*stack_a);
+    if (size == 1)
+    return ;
+    else if (size == 2)
+        sort_two(stack_a);
+    else if (size == 3)
+        sort_three(stack_a);
+    else if (size == 4)
+      sort_four(stack_a, stack_b);
+    else if (size == 5)
+      sort_five(stack_a, stack_b);
+    else if (size > 5 && size <= 100)
+        sort_chunk(stack_a, stack_b, 16);
+     else if (size > 100)
+        sort_chunk(stack_a, stack_b, 33);
+}
 void f()
 {
     system("leaks push_swap");
 }
 int main(int ac, char **av)
 {
-     atexit(f);
+     //atexit(f);
    t_stack *stack_a = NULL;
    t_stack *stack_b = NULL;
-    int size;
+  int size;
     t_data data;
+
     if (ac < 2)
       return (0);
-validate_input(ac, av, &data);
+ validate_input(ac, av, &data);
  stack_a = init_stack(&stack_a, &data);
-
-  size = size_stack(stack_a);
-    if (size == 2)
-        sort_two(&stack_a);
-    else if (size == 3)
-        sort_three(&stack_a);
-    else if (size > 5 && size <= 100)
-        sort_chunk(&stack_a, &stack_b, 16);
-     else 
-        sort_chunk(&stack_a, &stack_b, 33);
-free_data(&data);
-free_stack(&stack_a);
-free_stack(&stack_b);
+ sort_stack(&stack_a, &stack_b);
+ free_data(&data);
+ free_stack(&stack_a);
+ free_stack(&stack_b);
 }
+
+// ./push_swap 922337203685477580100
+// ./push_swap " 0"0
+// ./push_swap "  "
+// ./push_swap " "1" "
+// ./push_swap "  -"0"2 -"1"0 "
+// ./push_swap "  -"0"2 -"1"0 "

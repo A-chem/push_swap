@@ -19,6 +19,13 @@ typedef struct s_stack
     size_t          index;
     struct s_stack  *next;
 }                   t_stack;
+typedef struct s_element
+{
+    int size_a;
+    int size_b;
+    int *array ;
+
+} t_element;
 
 int     input_valid(t_data *data);
 
@@ -54,11 +61,16 @@ void    rrr(t_stack **stack_a, t_stack **stack_b);
 
 void    sort_two(t_stack **stack_a);
 void    sort_three(t_stack **stack_a);
+void    sort_four(t_stack **stack_a, t_stack **stack_b);
+void    sort_five(t_stack **stack_a, t_stack **stack_b);
 void    sort_chunk(t_stack **stack_a, t_stack **stack_b, int chunk_size);
 int     size_stack(t_stack *stack);
 int     *stack_array(t_stack *stack, int size);
 int     find_index_in_array( int *array, int size, int data);
-void    move_element (t_stack **stack_a, t_stack **stack_b, int a_index, int *size_b, int chunk_size);
+void    move_element (t_stack **stack_a, t_stack **stack_b, int a_index,t_element *size, int chunk_size);
+int     detect_comb(t_stack **stack_a, t_element *element);
+int     find_min_index(t_stack *stack);
+void    move_min_to_top(t_stack **stack, int min_i);
 int     find_max_index(t_stack *stack_b);
 void    move_max_to_top(t_stack **stack_b, int max_i);
 void    push_stack_a(t_stack **stack_a, t_stack **stack_b);

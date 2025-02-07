@@ -3,7 +3,7 @@ CC = cc
 CFLAGS =  #-Wall -Wextra -Werror   
 SRCS = ./src/push_swap.c ./src/input_valid.c ./src/init_stack.c ./src/sorting.c ./libft_utils/ft_split.c ./libft_utils/ft_isdigit.c ./libft_utils/ft_atoi.c \
 		./libft_utils/ft_strlen.c  ./libft_utils/ft_strdup.c ./libft_utils/ft_strjoin.c  ./libft_utils/ft_strchr.c ./utils/memory_management.c  ./utils/sorting_utils_1.c\
-		 ./utils/sorting_utils_2.c ./operations/operations_swap.c ./operations/operations_push.c ./operations/operations_rotate.c ./operations/operations_reverse_rotate.c \
+		 ./utils/sorting_utils_2.c ./utils/sorting_utils_3.c ./operations/operations_swap.c ./operations/operations_push.c ./operations/operations_rotate.c ./operations/operations_reverse_rotate.c \
 
 OBJS = $(SRCS:.c=.o)
 
