@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 19:53:01 by achemlal          #+#    #+#             */
+/*   Updated: 2025/02/08 19:54:16 by achemlal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -8,7 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-#include "get_next_line.h"
+# include "get_next_line.h"
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);

@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/08 19:54:46 by achemlal          #+#    #+#             */
+/*   Updated: 2025/02/08 19:55:42 by achemlal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/checker_bonus.h"
+
 long	ft_atoi_long(const char *str)
 {
 	long		nbr;
@@ -26,6 +39,7 @@ long	ft_atoi_long(const char *str)
 	}
 	return (nbr * sign);
 }
+
 int	ft_atoi(char *str)
 {
 	int	i;

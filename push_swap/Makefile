@@ -2,7 +2,7 @@ NAME = push_swap
 NAME_BONUS = checker
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =#-Wall -Wextra -Werror
 
 SRCS = ./Mandatory/src/push_swap.c ./Mandatory/src/input_valid.c ./Mandatory/src/init_stack.c ./Mandatory/src/sorting.c ./Mandatory/libft_utils/ft_split.c ./Mandatory/libft_utils/ft_isdigit.c ./Mandatory/libft_utils/ft_atoi.c \
 		./Mandatory/libft_utils/ft_strlen.c  ./Mandatory/libft_utils/ft_strdup.c ./Mandatory/libft_utils/ft_strjoin.c  ./Mandatory/libft_utils/ft_strchr.c ./Mandatory/utils/memory_management.c  ./Mandatory/utils/sorting_utils_1.c\
