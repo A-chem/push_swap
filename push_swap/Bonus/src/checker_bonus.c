@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:13:59 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 20:57:59 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:01:57 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ int	main(int ac, char **av)
 	if (!validate_input(ac, av, &data))
 	{
 		write(2, "Error\n", 6);
-		return (free_data(&data), 0);
+		free_data(&data);
+		exit(1);
 	}
 	stack_a = init_stack(&stack_a, &data);
 	read_and_execute(&stack_a, &stack_b);
-	while (stack_a)
-		stack_a = stack_a->next;
 	free_data(&data);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

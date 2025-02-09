@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:00:52 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 21:03:20 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:59:44 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ int	main(int ac, char **av)
 		return (0);
 	if (!validate_input(ac, av, &data))
 	{
-		return (free_stack(&stack_a),
-			free_stack(&stack_b), free_data(&data), 0);
+		write(2, "Error\n", 6);
+		free_data(&data);
+		exit(1);
 	}
 	stack_a = init_stack(&stack_a, &data);
 	if (is_sorted(stack_a))
