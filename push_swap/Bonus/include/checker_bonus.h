@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:46:11 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 19:52:35 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:23:29 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*ft_strchr(char *s, int c);
 char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strtrim(char *s1, char *set);
 void	sa(t_stack **stack_a);
 void	sb(t_stack **stack_b);
 void	ss(t_stack **stack_a, t_stack **stack_b);

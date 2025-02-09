@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:00:52 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/09 11:59:44 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:25:24 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ int	validate_input(int ac, char **av, t_data *data)
 {
 	int		i;
 	char	*temp;
+	char	*trimmed;
 
 	i = 1;
 	while (i < ac)
 	{
-		if (av[i][0] == '\0')
+		trimmed = ft_strtrim(av[i], " ");
+		if (!trimmed || !trimmed[0])
 			return (0);
+		free(trimmed);
 		temp = data->str;
 		data->str = ft_strjoin(data->str, av[i]);
 		free(temp);
