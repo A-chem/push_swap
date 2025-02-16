@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:49:09 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 18:57:39 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/15 09:26:54 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	*stack_array(t_stack *stack, int size)
 	int	i;
 
 	array = malloc(sizeof(int) * size);
+	if (!array)
+		return (NULL);
 	i = 0;
 	while (stack)
 	{

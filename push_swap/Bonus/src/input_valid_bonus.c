@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:24:51 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 20:26:42 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:56:57 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ int	input_valid(t_data *data)
 	{
 		if (!valid_number(data->num[i]))
 			return (0);
-		else if (ft_atoi_long(data->num[i]) > INT_MAX
-			|| ft_atoi_long(data->num[i]) < INT_MIN)
+		else if (ft_atoi_long(data->num[i]) == 4815162342)
 			return (0);
 		else if (ft_duplicate(data->num, data->num[i]) == 0)
 			return (0);

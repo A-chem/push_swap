@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:10:20 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 18:27:48 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:16:22 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,5 @@ void	sort_chunk(t_stack **stack_a, t_stack **stack_b, t_element *element)
 		move_element(stack_a, stack_b, a_index, element);
 	}
 	push_stack_a(stack_a, stack_b);
-	free(array);
+	free(element->array);
 }

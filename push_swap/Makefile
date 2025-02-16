@@ -2,7 +2,7 @@ NAME = push_swap
 NAME_BONUS = checker
 
 CC = cc
-CFLAGS =#-Wall -Wextra -Werror
+CFLAGS = #-Wall -Wextra -Werror  
 
 SRCS = ./Mandatory/src/push_swap.c ./Mandatory/src/input_valid.c ./Mandatory/src/init_stack.c ./Mandatory/src/sorting.c ./Mandatory/utils/ft_split.c ./Mandatory/utils/ft_isdigit.c ./Mandatory/utils/ft_atoi.c \
 		./Mandatory/utils/ft_strlen.c  ./Mandatory/utils/ft_strdup.c ./Mandatory/utils/ft_strtrim.c ./Mandatory/utils/ft_strjoin.c  ./Mandatory/utils/ft_strchr.c ./Mandatory/utils/memory_management.c  ./Mandatory/utils/sorting_utils_1.c\
@@ -11,7 +11,7 @@ SRCS = ./Mandatory/src/push_swap.c ./Mandatory/src/input_valid.c ./Mandatory/src
 OBJS = $(SRCS:.c=.o)
 
 SRCS_BONUS = ./Bonus/src/checker_bonus.c   ./Bonus/src/input_valid_bonus.c  ./Bonus/src/read_execution_bonus.c  ./Bonus/src/init_stack_bonus.c   ./Bonus/utils_bonus/ft_split_bonus.c  ./Bonus/utils_bonus/ft_atoi_bonus.c  ./Bonus/utils_bonus/ft_isdigit_bonus.c \
-		     ./Bonus/utils_bonus/ft_strncmp_bonus.c ./Bonus/utils_bonus/ft_strtrim_bonus.c ./Bonus/operations_bonus/operations_swap_bonus.c  ./Bonus/operations_bonus/operations_push_bonus.c  ./Bonus/operations_bonus/operations_rotate_bonus.c  ./Bonus/operations_bonus/operations_reverse_rotate_bonus.c  ./Bonus/utils_bonus/memory_management_bonus.c  \
+		     ./Bonus/utils_bonus/ft_strncmp_bonus.c ./Bonus/utils_bonus/ft_strtrim_bonus.c  ./Bonus/utils_bonus/checker_utils_bonus1.c ./Bonus/utils_bonus/checker_utils_bonus2.c ./Bonus/operations_bonus/operations_swap_bonus.c  ./Bonus/operations_bonus/operations_push_bonus.c  ./Bonus/operations_bonus/operations_rotate_bonus.c  ./Bonus/operations_bonus/operations_reverse_rotate_bonus.c  ./Bonus/utils_bonus/memory_management_bonus.c  \
 			 ./Bonus/get_next_line_bonus/get_next_line_bonus.c  ./Bonus/get_next_line_bonus/get_next_line_utils_bonus.c  \
 
 BONUS_OBJS = $(SRCS_BONUS:.c=.o)

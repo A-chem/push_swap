@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:46:11 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/09 16:23:29 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:00:05 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	read_and_execute(t_stack **a, t_stack **b);
 t_stack	*create_node(int value, size_t index);
 t_stack	*insert_node(t_stack *stack, int value, size_t index);
 t_stack	*init_stack(t_stack **stack, t_data *data);
+void	execute_operation(t_stack **stack_a, t_stack **stack_b, char **opr);
+char	*read_operations(void);
+char	**parse_operations(char *str);
+void	validate_operations(char **opr);
+void	execute_operation(t_stack **stack_a, t_stack **stack_b, char **opr);
+int		check_operation(char **opr);
 int		ft_atoi(char *str);
 long	ft_atoi_long(const char *str);
 int		ft_isdigit(int c);
