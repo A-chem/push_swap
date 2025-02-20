@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/08 18:00:52 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/15 09:53:15 by achemlal         ###   ########.fr       */
+/*   Created: 2025/02/08 20:13:59 by achemlal          #+#    #+#             */
+/*   Updated: 2025/02/19 18:13:50 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../include/checker_bonus.h"
 
-int	validate_input(int ac, char **av, t_data *data)
+static int	validate_input(int ac, char **av, t_data *data)
 {
 	int		i;
 	char	*temp;
 	char	*trimmed;
 
 	i = 1;
-	data->str = NULL;
 	while (i < ac)
 	{
 		trimmed = ft_strtrim(av[i], " ");
@@ -39,42 +38,14 @@ int	validate_input(int ac, char **av, t_data *data)
 	return (1);
 }
 
-void	sort_stack(t_stack **stack_a, t_stack **stack_b)
-{
-	int			size;
-	t_element	element;
-
-	size = size_stack(*stack_a);
-	if (size == 1)
-		return ;
-	else if (size == 2)
-		sort_two(stack_a);
-	else if (size == 3)
-		sort_three(stack_a);
-	else if (size == 4)
-		sort_four(stack_a, stack_b);
-	else if (size == 5)
-		sort_five(stack_a, stack_b);
-	else if (size > 5 && size <= 100)
-	{
-		element.chunk_size = 16;
-		sort_chunk(stack_a, stack_b, &element);
-	}
-	else if (size > 100)
-	{
-		element.chunk_size = 32;
-		sort_chunk(stack_a, stack_b, &element);
-	}
-}
-
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_data	data;
 
-	stack_b = NULL;
 	stack_a = NULL;
+	stack_b = NULL;
 	if (ac < 2)
 		return (0);
 	if (!validate_input(ac, av, &data))
@@ -84,10 +55,7 @@ int	main(int ac, char **av)
 		exit(1);
 	}
 	stack_a = init_stack(&stack_a, &data);
-	if (is_sorted(stack_a))
-		return (free_stack(&stack_a),
-			free_stack(&stack_b), free_data(&data), 0);
-	sort_stack(&stack_a, &stack_b);
+	read_and_execute(&stack_a, &stack_b);
 	free_data(&data);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

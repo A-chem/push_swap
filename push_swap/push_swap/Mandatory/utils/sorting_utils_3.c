@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:04:31 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 19:12:47 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/16 14:09:15 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,21 @@ int	detect_comb(t_stack **stack_a, t_element *element)
 
 int	find_min_index(t_stack *stack)
 {
-	t_stack	*temp;
 	int		min;
 	int		min_i;
 	int		i;
 
-	temp = stack;
 	min = stack->data;
 	min_i = 0;
 	i = 0;
-	while (temp)
+	while (stack)
 	{
-		if (temp->data < min)
+		if (stack->data < min)
 		{
-			min = temp->data;
+			min = stack->data;
 			min_i = i;
 		}
-		temp = temp->next;
+		stack = stack->next;
 		i++;
 	}
 	return (min_i);

@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 18:57:52 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 19:04:19 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/16 14:04:52 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,21 @@
 
 int	find_max_index(t_stack *stack_b)
 {
-	t_stack	*temp;
 	int		max;
 	int		max_i;
 	int		i;
 
-	temp = stack_b;
 	max = stack_b->data;
 	max_i = 0;
 	i = 0;
-	while (temp)
+	while (stack_b)
 	{
-		if (temp->data > max)
+		if (stack_b->data > max)
 		{
-			max = temp->data;
+			max = stack_b->data;
 			max_i = i;
 		}
-		temp = temp->next;
+		stack_b = stack_b->next;
 		i++;
 	}
 	return (max_i);

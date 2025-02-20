@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:27:04 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/15 20:56:22 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/16 13:49:17 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ char	*read_operations(void)
 	line = get_next_line(0);
 	while (line)
 	{
+		if (!check_operation (line))
+		{
+			write (1, "Error\n", 6);
+			exit(1);
+		}
 		tmp = str;
 		str = ft_strjoin(str, line);
 		if (!str)
@@ -29,12 +34,6 @@ char	*read_operations(void)
 		free(tmp);
 		free(line);
 		line = get_next_line(0);
-	}
-	if (!str || *str == '\0')
-	{
-		write(2, "Error\n", 6);
-		free(str);
-		exit(1);
 	}
 	return (str);
 }
@@ -48,16 +47,6 @@ char	**parse_operations(char *str)
 	if (!opr)
 		return (NULL);
 	return (opr);
-}
-
-void	validate_operations(char **opr)
-{
-	if (!check_operation(opr))
-	{
-		write(2, "Error\n", 6);
-		free_double_(opr);
-		exit(1);
-	}
 }
 
 void	execute_and_check(t_stack **stack_a, t_stack **stack_b, char **opr)
@@ -89,7 +78,12 @@ void	read_and_execute(t_stack **stack_a, t_stack **stack_b)
 	str = NULL;
 	str = read_operations ();
 	opr = parse_operations (str);
-	validate_operations(opr);
+	if (!opr)
+	{
+		free_stack (stack_a);
+		free_stack (stack_b);
+		exit (1);
+	}
 	execute_and_check(stack_a, stack_b, opr);
 	free_double_(opr);
 	free(str);
