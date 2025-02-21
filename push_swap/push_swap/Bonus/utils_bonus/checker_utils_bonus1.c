@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 21:03:29 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/16 13:51:38 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:32:00 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static int	check_3_char_operation(char *opr)
 	if (ft_strncmp(opr, "sa\n", 3) == 0 || ft_strncmp(opr, "sb\n", 3) == 0
 		||ft_strncmp(opr, "ss\n", 3) == 0 || ft_strncmp(opr, "pa\n", 3) == 0
 		||ft_strncmp(opr, "pb\n", 3) == 0 || ft_strncmp(opr, "ra\n", 3) == 0
-		||ft_strncmp(opr, "rb\n", 3) == 0 || ft_strncmp(opr, "rrn\n", 3) == 0)
+		||ft_strncmp(opr, "rb\n", 3) == 0 || ft_strncmp(opr, "rr\n", 3) == 0)
 		return (1);
 	return (0);
 }
 
 static int	check_4_char_operation(char *opr)
 {
-	if (ft_strncmp(opr, "rra\n", 4) == 0 || ft_strncmp(opr, "rr\n", 4) == 0
+	if (ft_strncmp(opr, "rra\n", 4) == 0 || ft_strncmp(opr, "rrb\n", 4) == 0
 		||ft_strncmp(opr, "rrr\n", 4) == 0)
 		return (1);
 	return (0);

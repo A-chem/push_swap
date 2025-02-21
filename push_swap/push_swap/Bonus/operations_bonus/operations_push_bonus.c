@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:06:39 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/08 20:07:50 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:22:37 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
+	if (!*stack_a || !*stack_b)
+		return ;
 	if (*stack_b)
 	{
 		temp = *stack_b;
@@ -29,6 +31,8 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
+	if (!*stack_a || !*stack_b)
+		return ;
 	if (*stack_a)
 	{
 		temp = *stack_a;

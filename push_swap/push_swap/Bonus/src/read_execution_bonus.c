@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:27:04 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/16 13:49:17 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:05:01 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ char	*read_operations(void)
 	while (line)
 	{
 		if (!check_operation (line))
-		{
-			write (1, "Error\n", 6);
-			exit(1);
-		}
+			handle_error ();
 		tmp = str;
 		str = ft_strjoin(str, line);
 		if (!str)
@@ -57,7 +54,6 @@ void	execute_and_check(t_stack **stack_a, t_stack **stack_b, char **opr)
 		write(1, "OK\n", 3);
 		free_double_(opr);
 		free_stack (stack_a);
-		free_stack (stack_b);
 		exit (0);
 	}
 	else
@@ -65,7 +61,6 @@ void	execute_and_check(t_stack **stack_a, t_stack **stack_b, char **opr)
 		write(1, "KO\n", 3);
 		free_double_(opr);
 		free_stack (stack_a);
-		free_stack (stack_b);
 		exit (0);
 	}
 }

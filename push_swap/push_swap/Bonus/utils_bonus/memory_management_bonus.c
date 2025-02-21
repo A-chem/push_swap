@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:37:52 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/15 14:23:55 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:24:25 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
+	if (!stack || !*stack)
+		return ;
+	temp = NULL;
 	while (*stack)
 	{
 		temp = *stack;
@@ -45,4 +48,10 @@ void	free_stack(t_stack **stack)
 		temp = NULL;
 	}
 	stack = NULL;
+}
+
+void	handle_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

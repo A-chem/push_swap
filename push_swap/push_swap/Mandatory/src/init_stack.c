@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 17:44:19 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/16 09:29:15 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:49:31 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ t_stack	*init_stack(t_stack **stack, t_data *data)
 		*stack = insert_node(*stack, ft_atoi(data->num[i]), i);
 		if (!*stack)
 		{
+			free_stack(stack);
 			free_data(data);
-			return (NULL);
+			handle_error ();
 		}
 		i++;
 	}

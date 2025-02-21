@@ -6,27 +6,30 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 20:13:59 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/19 18:13:50 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:38:38 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker_bonus.h"
 
-static int	validate_input(int ac, char **av, t_data *data)
+int	validate_input(int ac, char **av, t_data *data)
 {
 	int		i;
 	char	*temp;
 	char	*trimmed;
 
 	i = 1;
+	data->str = NULL;
 	while (i < ac)
 	{
 		trimmed = ft_strtrim(av[i], " ");
 		if (!trimmed || !trimmed[0])
-			return (free(trimmed), 0);
+			return (free (trimmed), free (data->str), handle_error(), 0);
 		free(trimmed);
 		temp = data->str;
 		data->str = ft_strjoin(data->str, av[i]);
+		if (!data->str)
+			return (free (temp), handle_error(), 0);
 		free(temp);
 		temp = data->str;
 		data->str = ft_strjoin(data->str, " ");
@@ -49,11 +52,7 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	if (!validate_input(ac, av, &data))
-	{
-		write(2, "Error\n", 6);
-		free_data(&data);
-		exit(1);
-	}
+		handle_error ();
 	stack_a = init_stack(&stack_a, &data);
 	read_and_execute(&stack_a, &stack_b);
 	free_data(&data);

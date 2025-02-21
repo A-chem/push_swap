@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 19:46:11 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/16 13:46:15 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:20:27 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	free_double_(char **str);
 void	free_data(t_data *data);
 void	free_stack(t_stack **stack);
+void	handle_error(void);
 
 #endif

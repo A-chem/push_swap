@@ -6,7 +6,7 @@
 /*   By: achemlal <achemlal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 16:27:44 by achemlal          #+#    #+#             */
-/*   Updated: 2025/02/09 16:14:01 by achemlal         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:24:58 by achemlal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ int		find_max_index(t_stack *stack_b);
 void	move_max_to_top(t_stack **stack_b, int max_i);
 void	push_stack_a(t_stack **stack_a, t_stack **stack_b);
 void	print_stack(t_stack *stack, char *name);
+void	handle_error(void);
 
 #endif
